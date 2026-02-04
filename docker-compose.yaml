@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  # --- ENCONTRO 1: REDIS ---
+  redis-aula:
+    image: redis:alpine
+    container_name: redis-aula
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes  # Garante que salve no disco
+    networks:
+      - rede-aula
+  # --- ENCONTRO 2: MONGODB ---
+  mongo-aula:
+    image: mongo:latest
+    container_name: mongo-aula
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - rede-aula
+volumes:
+  redis_data:
+  mongo_data:
+networks:
+  rede-aula:
+    driver: bridge
