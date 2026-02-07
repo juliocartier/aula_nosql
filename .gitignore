@@ -4,3 +4,8 @@ env
 venv
 myenv*
 resolucao_questoes.py
+docker-compose_nao_correto.yaml
+gerador_dados.py
+gerar_dados.py
+resolucao_crise.py
+resolucao_questoes_redis.py
