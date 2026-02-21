@@ -30,7 +30,8 @@ def importar_dados():
     # Mostrando um exemplo
     print("\n🔍 Exemplo de documento inserido:")
     # find_one pega o primeiro que achar
-    print(colecao.find_one({}, {"name": 1, "email": 1, "_id": 0})) 
+    #print(colecao.find_one({}, {"name": 1, "email": 1, "_id": 0})) 
+    print(colecao.find_one({}))
 
 if __name__ == "__main__":
     importar_dados()

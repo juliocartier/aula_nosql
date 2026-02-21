@@ -14,7 +14,7 @@ Para que o sistema seja altamente escalável, você deverá orquestrar **quatro 
 
 1.  Entregar a cotação atual com **baixíssima latência** para o site (Uso do **Redis**).
 2.  Armazenar o **log bruto (Data Lake)** para auditorias futuras (Uso do **MongoDB**).
-3.  Armazenar a **série temporal de preços** otimizada para gráficos (Uso do **Cassandra || ScyllaDB**).
+3.  Armazenar a **série temporal de preços** otimizada para gráficos (Uso do **Cassandra | ScyllaDB**).
 4.  Mapear a **rede de investidores** para o sistema de alertas (Uso do **Neo4j**).
 
 ---
