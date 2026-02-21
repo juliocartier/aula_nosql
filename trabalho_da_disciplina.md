@@ -115,7 +115,7 @@ O trabalho deverá ser hospedado no **GitHub** contendo rigorosamente os seguint
 * **E-mail:** Envie para `juliocartier@gmail.com`
 * **Assunto do E-mail:** `Trabalho Final NoSQL - [Seu Nome Completo]`
 * **Corpo do E-mail:** Deve conter obrigatoriamente o seu **Nome Completo** e o **Link público do repositório no GitHub**.
-* **Data Limite de Entrega:** **04 de Março**
+* **Data Limite de Entrega:** **06 de Março**
 
 **Regra de Ouro (Atenção):** O projeto precisa estar **executando**. Projetos que não subirem pelo `docker-compose up` ou que o script Python quebrar imediatamente por erros de sintaxe sofrerão penalidades severas. Teste seu código antes de enviar!
 
