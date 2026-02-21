@@ -2,7 +2,7 @@
 
 | **Disciplina** | Banco de Dados NoSQL |
 | :--- | :--- |
-| **Tecnologias** | Python, Redis, MongoDB, Cassandra, Neo4j, Docker |
+| **Tecnologias** | Python, Redis, MongoDB, (Cassandra || ScyllaDB ), Neo4j, Docker |
 | **Conceito** | Persistência Poliglota (O banco certo para o problema certo) |
 
 ---
@@ -14,7 +14,7 @@ Para que o sistema seja altamente escalável, você deverá orquestrar **quatro 
 
 1.  Entregar a cotação atual com **baixíssima latência** para o site (Uso do **Redis**).
 2.  Armazenar o **log bruto (Data Lake)** para auditorias futuras (Uso do **MongoDB**).
-3.  Armazenar a **série temporal de preços** otimizada para gráficos (Uso do **Cassandra**).
+3.  Armazenar a **série temporal de preços** otimizada para gráficos (Uso do **Cassandra || ScyllaDB**).
 4.  Mapear a **rede de investidores** para o sistema de alertas (Uso do **Neo4j**).
 
 ---
@@ -27,7 +27,7 @@ Seu script Python deve seguir rigorosamente este fluxo lógico a cada ciclo para
     * *Cache Hit:* Se estiver no Redis e dentro da validade (TTL), exiba o valor recuperado de lá.
     * *Cache Miss:* Se não estiver (ou expirou), faça a requisição `GET` na API escolhida e atualize o Redis com o novo valor e um TTL adequado.
 2.  **Data Lake (MongoDB):** Salve o documento JSON bruto retornado pela API contendo: `Moeda`, `Valor`, `Variação` e adicione o campo `data_coleta` com o timestamp atual (`datetime.now()`).
-3.  **Série Temporal (Cassandra):** Insira uma linha na tabela `historico_precos`. A tabela deve ser modelada para buscas rápidas por moeda e ordenadas por data/hora decrescente.
+3.  **Série Temporal (Cassandra || ScyllaDB):** Insira uma linha na tabela `historico_precos`. A tabela deve ser modelada para buscas rápidas por moeda e ordenadas por data/hora decrescente.
 4.  **Sistema de Alertas (Neo4j):** No Grafo, devem existir previamente nós `:Investidor` ligados às `:Moedas`. A cada atualização de preço, faça uma consulta Cypher para descobrir: *"Quais investidores acompanham esta moeda e devem ser notificados?"* e imprima os nomes no terminal.
 
 ---
@@ -127,7 +127,7 @@ A avaliação será técnica e baseada no funcionamento prático da arquitetura 
 
 * **(2,0 pts) Execução e Orquestração:** O `docker-compose.yml` subiu os 4 bancos corretamente. O Python roda em loop sem quebrar
 * **(2,0 pts) Implementação Redis:** A lógica de *Cache Hit* e *Cache Miss* foi implementada respeitando o TTL.
-* **(2,0 pts) Implementação Cassandra:** A tabela de série temporal possui Partition Key e Clustering Key adequadas.
+* **(2,0 pts) Implementação Cassandra || ScyllaDB:** A tabela de série temporal possui Partition Key e Clustering Key adequadas.
 * **(1,5 pts) Implementação Neo4j:** Os nós de Investidor/Moeda foram criados e a query Cypher identifica quem acompanha a moeda.
 * **(1,5 pts) Implementação MongoDB:** O payload da API foi salvo com sucesso com o timestamp (`data_coleta`).
 * **(1,0 pt) Qualidade e Logs:** O código possui `try/except` e os logs no terminal refletem as ações nos quatro bancos.
