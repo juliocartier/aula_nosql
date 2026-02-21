@@ -2,7 +2,7 @@
 
 | **Disciplina** | Banco de Dados NoSQL |
 | :--- | :--- |
-| **Tecnologias** | Python, Redis, MongoDB, (Cassandra || ScyllaDB ), Neo4j, Docker |
+| **Tecnologias** | Python, Redis, MongoDB, (Cassandra ou ScyllaDB ), Neo4j, Docker |
 | **Conceito** | Persistência Poliglota (O banco certo para o problema certo) |
 
 ---
